@@ -1,5 +1,4 @@
 ﻿using FruitsSystem.Controller;
-using FruitsSystem.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -31,17 +30,6 @@ namespace FruitsSystem.Views
         {
             // TODO: This line of code loads data into the 'fruitsDBDataSet.Fruit' table. You can move, or remove it, as needed.
             this.fruitTableAdapter.Fill(this.fruitsDBDataSet.Fruit);
-            RefreshTable();
-        }
-
-        private void btnCreateFruit_Click(object sender, EventArgs e)
-        {
-            Fruit fruit = new Fruit();
-            fruit.Name = txtName.Text;
-            fruit.Price = double.Parse(txtPrice.Text);
-            fruit.Sugar = double.Parse(txtSugar.Text);
-            fruit.Color = txtColor.Text;
-            mainController.CreateFruit(fruit);
             RefreshTable();
         }
     }

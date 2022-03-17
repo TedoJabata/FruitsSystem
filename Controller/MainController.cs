@@ -11,20 +11,10 @@ namespace FruitsSystem.Controller
     {
         public List<Fruit> ShowAllFruits()
         {
-            using (FruitsDBEntities fdbe = new FruitsDBEntities())
+            using (FruitsDBEntities gdbe = new FruitsDBEntities())
             {
-                var fruits = fdbe.Fruits.ToList();
+                var fruits = gdbe.Fruits.ToList();
                 return fruits;
-            }
-        }
-
-        public void CreateFruit(Fruit f)
-        {
-            using (FruitsDBEntities fdbe = new FruitsDBEntities())
-            {
-                f.Id = fdbe.Fruits.Count() + 1;
-                fdbe.Fruits.Add(f);
-                fdbe.SaveChanges();
             }
         }
     }
