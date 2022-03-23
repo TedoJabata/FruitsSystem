@@ -27,5 +27,42 @@ namespace FruitsSystem.Controller
                 fdbe.SaveChanges();
             }
         }
+
+        public void UpdateFruit(int id, string name, int price, int sugar, string color, Fruit fruit)
+        {
+            using (FruitsDBEntities fdbe = new FruitsDBEntities())
+            {
+                var fruitToUpdate = fdbe.Fruits.Where(f => f.Id == id).FirstOrDefault();
+                if (fruitToUpdate != null)
+                {
+                    fruitToUpdate.Id = id;
+                    fruitToUpdate.Name = name;
+                    fruitToUpdate.Price = price;
+                    fruitToUpdate.Sugar = sugar;
+                    fruitToUpdate.Color = color;
+                    fdbe.SaveChanges();
+                }
+            }
+        }       
+
+
+
+        public void DeleteFruit(int id)
+        {
+            using(FruitsDBEntities fdbe = new FruitsDBEntities())
+            {
+                var fruitToDelete = fdbe.Fruits.Where(f => f.Id == id).FirstOrDefault();
+                if (fruitToDelete != null)
+                {
+                    fdbe.Fruits.Remove(fruitToDelete);
+                    fdbe.SaveChanges();
+                }
+            }
+        }
+
+        internal void UpdateFruit(int id, Fruit fruit)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

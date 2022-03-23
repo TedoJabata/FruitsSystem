@@ -44,5 +44,26 @@ namespace FruitsSystem.Views
             mainController.CreateFruit(fruit);
             RefreshTable();
         }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow row = dgvFruits.CurrentRow;
+            int id = int.Parse(row.Cells[0].Value.ToString());
+            Fruit fruit = new Fruit();
+            fruit.Name = txtName.Text;
+            fruit.Price = double.Parse(txtPrice.Text);
+            fruit.Sugar = double.Parse(txtSugar.Text);
+            fruit.Color = txtColor.Text;
+            mainController.UpdateFruit(id, fruit);
+            RefreshTable();
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow row = dgvFruits.CurrentRow;
+            int id = int.Parse(row.Cells[0].Value.ToString());
+            mainController.DeleteFruit(id);
+            RefreshTable();
+        }
     }
 }
